@@ -1,0 +1,204 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0d1117;
+  color: #fff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  width: 100%;
+  padding: 15px 40px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #fff;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 80vh;         /* Small height so playlists fit nicely */
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* Text bottom-left aligned */
+  align-items: flex-start;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/icons-and-images/Harmonium.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.5);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+/* ===== Practice Input Box ===== */
+.practice-input {
+  padding: 40px 40px;
+  text-align: center;
+}
+
+.practice-input h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.input-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.input-row input {
+  width: 300px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-row button {
+  padding: 12px 20px;
+  background: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+.input-row button:hover {
+  background: #409944;
+}
+
+/* Chart Section */
+.chart-section {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+  background: #000;
+  color: #ddd;
+  padding: 60px 20px;
+  border-top: 1px solid #222;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+footer h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+footer p {
+  margin-top: 10px;
+  color: #aaa;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+
+.links h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.links ul {
+  list-style: none;
+}
+
+.links li {
+  margin: 10px 0;
+}
+
+.links a {
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s ease;
+}
+
+.links a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.bottom-text {
+  text-align: center;
+  margin-top: 30px;
+  color: #666;
+  font-size: 0.9rem;
+}

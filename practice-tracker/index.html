@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Practice Tracker · Music With Shrey</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    /* INPUT SECTION */
+    .practice-input {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .practice-input h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .input-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .input-row input {
+      padding: 12px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .input-row button {
+      padding: 12px 20px;
+      background: #1f75ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* CHART */
+    .chart-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    /* CALENDAR */
+    .calendar-section {
+      max-width: 900px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .calendar-card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-top: 20px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .calendar-grid div {
+      background: #f3f3f3;
+      padding: 14px 0;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+    }
+
+    .calendar-grid div:hover {
+      background: #e6e6e6;
+    }
+
+    .has-practice {
+      background: #ccffd1 !important;
+      border: 1px solid #8aff95;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1f1f1f;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: none;
+      font-size: 15px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 50px;
+      background: #202020;
+      color: #ddd;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin: 25px 0;
+    }
+
+    .links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .links ul li a {
+      text-decoration: none;
+      color: #ddd;
+    }
+
+    .bottom-text {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">Music With Shrey</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/practice-tracker">Practice Tracker</a></li>
+      <li><a href="/tutorials">Tutorials</a></li>
+    </ul>
+  </nav>
+
+  <!-- Practice Input -->
+  <section class="practice-input">
+    <h2>Daily Practice Tracker</h2>
+
+    <div class="input-row">
+      <input type="number" id="practiceMinutes" placeholder="Practiced time? (minutes)">
+      <button onclick="savePractice()">Save</button>
+    </div>
+  </section>
+
+  <!-- Chart -->
+  <section class="chart-section">
+    <canvas id="monthChart"></canvas>
+  </section>
+
+  <!-- Calendar -->
+  <section class="calendar-section">
+    <h2>Practice Calendar</h2>
+
+    <div class="calendar-card">
+      <h3 id="monthName"></h3>
+      <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+  </section>
+
+  <div class="popup" id="popup"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+
+      <div class="footer-section">
+        <h3>Music With Shrey</h3>
+        <p>Learn. Practice. Improve.</p>
+      </div>
+
+      <div class="footer-links">
+
+        <div class="links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/practice-tracker">Practice Tracker</a></li>
+            <li><a href="/lessons">Lessons</a></li>
+          </ul>
+        </div>
+
+        <div class="links">
+          <h4>Socials</h4>
+          <ul>
+            <li><a href="https://youtube.com/@MusicWithShreyOffcial">YouTube</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="bottom-text">© 2025 Music With Shrey · All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // ========== SAVE PRACTICE ==========
+    function savePractice() {
+      const mins = document.getElementById("practiceMinutes").value;
+
+      if (!mins || mins <= 0) {
+        alert("Enter valid minutes!");
+        return;
+      }
+
+      let today = new Date();
+      const key = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
+      localStorage.setItem(key, mins);
+
+      loadCalendar();
+      updateChart();
+      document.getElementById("practiceMinutes").value = "";
+    }
+
+    // ========== CALENDAR ==========
+    const grid = document.getElementById("calendarGrid");
+    const popup = document.getElementById("popup");
+
+    let today = new Date();
+    let month = today.getMonth();
+    let year = today.getFullYear();
+
+    document.getElementById("monthName").innerText =
+      today.toLocaleString("default", { month: "long" }) + " " + year;
+
+    function loadCalendar() {
+      grid.innerHTML = "";
+
+      let firstDay = new Date(year, month, 1).getDay();
+      let totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement("div");
+        blank.style.visibility = "hidden";
+        grid.appendChild(blank);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const cell = document.createElement("div");
+        cell.innerText = d;
+
+        const key = `${year}-${month + 1}-${d}`;
+        const saved = localStorage.getItem(key);
+
+        if (saved) cell.classList.add("has-practice");
+
+        cell.onclick = () => showPractice(key, d);
+
+        grid.appendChild(cell);
+      }
+    }
+
+    function showPractice(key, day) {
+      const saved = localStorage.getItem(key);
+      popup.style.display = "block";
+
+      if (saved) {
+        popup.innerText = `On ${day}, you practiced ${saved} minutes.`;
+      } else {
+        popup.innerText = `No practice recorded for ${day}.`;
+      }
+
+      setTimeout(() => (popup.style.display = "none"), 2000);
+    }
+
+    loadCalendar();
+
+    // ========== CHART ==========
+    const ctx = document.getElementById("monthChart");
+    let chart;
+
+    function updateChart() {
+      let days = [];
+      let minutes = [];
+
+      let totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let d = 1; d <= totalDays; d++) {
+        const key = `${year}-${month + 1}-${d}`;
+        days.push(d);
+        minutes.push(localStorage.getItem(key) ? Number(localStorage.getItem(key)) : 0);
+      }
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: days,
+          datasets: [{
+            label: "Daily Practice (minutes)",
+            data: minutes
+          }]
+        }
+      });
+    }
+
+    updateChart();
+  </script>
+
+</body>
+</html>

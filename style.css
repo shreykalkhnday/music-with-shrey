@@ -1,0 +1,222 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #0d1117;
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+header {
+  background: linear-gradient(90deg, #0d1117, #1b1f23);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+}
+
+.navbar h1 {
+  color: #00ffb3;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.navbar h1:hover {
+  color: #06d6a0;
+  transform: scale(1.05);
+}
+
+.nav-opt {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.navlinks a {
+  color: #e2e2e2;
+  text-decoration: none;
+  font-size: 1.3rem;
+  transition: 0.3s ease;
+}
+
+.navlinks a:hover {
+  color: #00ffb3;
+  transform: scale(1.2);
+}
+
+/* ===== Hero section ===== */
+.hero-section{
+  position: relative;    
+  overflow: hidden;       
+  height: 90vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.hero-section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/icons-and-images/Harmonium.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(5px);
+  transform: scale(1.1); 
+  z-index: -1;           
+}
+
+.hero-section .container{
+  height: 50%;
+  width: 50%;
+  border-radius: 20px;
+  border: 5px solid grey;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* background se upar */
+}
+
+/* ===== Lets Start Section ===== */
+.lets-start-section {
+  height: 70vh;
+  background: radial-gradient(circle at center, #222 0%, #000 80%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.lets-start-section .content {
+  max-width: 650px;
+  padding: 30px;
+}
+
+.lets-start-section h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.lets-start-section p {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* Button styling */
+.start-btn {
+  padding: 12px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.start-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #000;
+  color: #ddd;
+  padding: 60px 20px;
+  border-top: 1px solid #222;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.footer-section p {
+  font-size: 1rem;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* Links Grid */
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.footer-links .links h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 10px 0;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.footer-links a i {
+  margin-right: 8px;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Bottom */
+.bottom-text {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
